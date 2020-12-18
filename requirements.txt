@@ -1,7 +1,7 @@
-uncertainties==3.1.5
-scikit-learn==0.22.1
-scipy==1.4.1
-seaborn==0.9.1
+uncertainties
+scikit-learn
+scipy
+seaborn
 sklearn
 matplotlib
 numpy
