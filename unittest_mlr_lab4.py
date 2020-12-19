@@ -11,13 +11,9 @@ import numpy as np
 import seaborn as sns
 import sklearn as skl
 from sklearn import linear_model
+
 A3 = [[0, 0], [1, 1], [2, 2]]
 A4 = [0, 1, 2]
-
-
-
-import unittest
-
 
 
 class Testmlr(unittest.TestCase):
@@ -33,6 +29,9 @@ class Testmlr(unittest.TestCase):
         
     def test_setlin(self): # test routine
         p4 = mlr.mullin(A3,A4)
+        self.p6 = p4.summary_mullin()
+        self.p7 = p4.diag_Rval()
+        #self.p8 = p4.test_diag2()
         self.assertEqual(round(p4.summary_mul1()[0],2),0.5)
         self.assertEqual(str(type(p4.summary_mul1())),str("""<class 'numpy.ndarray'>"""))
         self.assertEqual(round(p4.summary_mul1()[1],2),0.5)
@@ -53,3 +52,5 @@ class Testmlr(unittest.TestCase):
         print('teardownClass')
         
 unittest.main(argv=[''], verbosity=2, exit=False)
+
+

@@ -55,9 +55,9 @@ class mullin:
         regr1 = regr.score(self.predictor_vec, self.response)
         return regr1*100
     
-    def test_diag2(self):
-        from sklearn import linear_model
-        return regr
+#     def test_diag2(self):
+#         from sklearn import linear_model
+#         return regr
 
 
 # # +
