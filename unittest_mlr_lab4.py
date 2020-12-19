@@ -15,7 +15,6 @@ from sklearn import linear_model
 A3 = [[0, 0], [1, 1], [2, 2]]
 A4 = [0, 1, 2]
 
-
 class Testmlr(unittest.TestCase):
     
     @classmethod
@@ -23,26 +22,33 @@ class Testmlr(unittest.TestCase):
         print('setupClass')
 
     def setUp(self):
-        self.p4 = mlr.mullin(A3,A4)
-        self.p5 = mlr.mullin(A3,A4)
-        print('set Up')
+        try:
+            self.p4 = mlr.mullin(A3,A4)
+            self.p5 = mlr.mullin(A3,A4)
+            print('set Up')
+        except:
+            print("Check the appropriate syntax, for example self.p4 = mlr.mullin(A3, A4)")
         
     def test_setlin(self): # test routine
-        p4 = mlr.mullin(A3,A4)
-        self.p6 = p4.summary_mullin()
-        self.p7 = p4.diag_Rval()
-        #self.p8 = p4.test_diag2()
-        self.assertEqual(round(p4.summary_mul1()[0],2),0.5)
-        self.assertEqual(str(type(p4.summary_mul1())),str("""<class 'numpy.ndarray'>"""))
-        self.assertEqual(round(p4.summary_mul1()[1],2),0.5)
-        self.assertEqual(str(type(p4.summary_mul1()[1])),str("""<class 'numpy.float64'>"""))
+        try:
+            p4 = mlr.mullin(A3,A4)
+            self.assertEqual(round(p4.summary_mul1()[0],2),0.5)
+            self.assertEqual(str(type(p4.summary_mul1())),str("""<class 'numpy.ndarray'>"""))
+            self.assertEqual(round(p4.summary_mul1()[1],2),0.5)
+            self.assertEqual(str(type(p4.summary_mul1()[1])),str("""<class 'numpy.float64'>"""))
+        except:
+            print("Make sure A3 and A4 are of comparable dimensions")
 
     def test_setlin2(self): # test routine
-        p5 = mlr.mullin(A3,A4)
-        self.assertEqual(round(p5.summary_mul2(),2),0)
-        self.assertEqual(str(type(p5.summary_mul2())),str("""<class 'numpy.float64'>"""))
-        self.assertEqual(round(p5.test_diag1(),2),100)
-        self.assertEqual(str(type(p5.test_diag1())),str("""<class 'numpy.float64'>"""))
+        try:
+            p5 = mlr.mullin(A3,A4)
+            p6 = p5.summary_mullin()
+            self.assertEqual(round(p5.summary_mul2(),2),0)
+            self.assertEqual(str(type(p5.summary_mul2())),str("""<class 'numpy.float64'>"""))
+            self.assertEqual(round(p5.test_diag1(),2),100)
+            self.assertEqual(str(type(p5.test_diag1())),str("""<class 'numpy.float64'>"""))
+        except:
+            print("Make sure A3 and A4 are of appropriate dimensions")
         
     def tearDown(self): # Setting up for the test
         print('Tear Down')
@@ -52,5 +58,3 @@ class Testmlr(unittest.TestCase):
         print('teardownClass')
         
 unittest.main(argv=[''], verbosity=2, exit=False)
-
-
